@@ -2,8 +2,13 @@
 # Don’t Build a Distributed Monolith
 https://notes.jomcgi.dev/notes-on-blogs-and-podcasts/don-t-build-a-distributed-monolith/
 
-#### Distributed Monolith ！！BAD！！
-An architecture that combines all the network latency, failure modes, and operational complexity of a distributed system with the tight coupling and deployment bottlenecks of a monolith. It is the worst of both worlds.
+<img width="509" height="478" alt="image" src="https://github.com/user-attachments/assets/6344ddb4-3853-4537-abd9-631396b262bf" />
+
+
+1. Ball of Mud Monolith (Bad): Physically monolithic, logically monolithic. The classic spaghetti-code monolith where everything is tightly coupled. Changes in one area create bugs in another.
+2. Modular Monolith (Good): Physically monolithic, logically modular. A single, deployable application with well-defined internal boundaries. This is often the best starting point for most systems.
+3. True Microservices (Good, if you need it): Physically distributed, logically modular. Independent services that can be developed, deployed, and scaled separately. This is the ideal, but it comes at a high cost.
+4. Distributed Monolith (The Monster 👹): Physically distributed, logically monolithic. The architecture we must avoid. It looks like microservices on the surface, but a change in one service requires changes and redeployments across many others.
 
 #### Binary coupling
 Binary coupling is a situation where two or more microservices have a direct dependency on each other, often in the form of an API contract or shared database schema.
