@@ -21,4 +21,15 @@ Binary coupling can be problematic because it can lead to a tightly coupled syst
 
 To avoid binary coupling, the author suggests using **event-driven architectures**, where microservices communicate with each other through asynchronous events rather than synchronous API calls. This approach decouples the services, allowing each service to evolve independently without affecting the other services. Additionally, event-driven architectures can help improve system scalability and resilience by enabling services to handle and recover from failures gracefully.
 
+#### Scale cube and microservices
+<img width="677" height="426" alt="image" src="https://github.com/user-attachments/assets/04467abb-9dfc-420d-a52a-86548be7cd66" />
+1. X-axis scaling, a.k.a. horizontal duplication; Scale by cloning.
+2. Z-axis scaling, a.k.a. data partitioning; Scale by splitting similar things, such as by customer ID.
+3. Y-axis scaling, a.k.a. functional decomposition; Scale by splitting things that are different, such as by function.
+
+A service is a mini application that implements narrowly focused functionality, such as order management, customer management, and so on. A service is scaled using X-axis
+scaling, though some services may also use Z-axis scaling. For example, the Order service consists of a set of load-balanced service instances.
+
+The high-level definition of microservice architecture (microservices) is an architectural style that functionally decomposes an application into a set of services.
+
 
