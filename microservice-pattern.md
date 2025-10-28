@@ -17,6 +17,8 @@ Binary coupling can be problematic because it can lead to a tightly coupled syst
 
 To avoid binary coupling, the author suggests using **event-driven architectures**, where microservices communicate with each other through asynchronous events rather than synchronous API calls. This approach decouples the services, allowing each service to evolve independently without affecting the other services. Additionally, event-driven architectures can help improve system scalability and resilience by enabling services to handle and recover from failures gracefully.
 
+#### Consistency (Monoliths) vs. Availability (Microservices)
+
 # Microservices Patterns
 
 <img width="1024" height="768" alt="image" src="https://github.com/user-attachments/assets/990d0bae-239f-4533-94e2-41b7af3e2462" />
