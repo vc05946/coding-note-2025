@@ -121,13 +121,17 @@ Decomposing an application into services by applying the decomposition patterns:
 
 
 1. Define the system operations: 
-   1. Define high-level domain model, define nouns
+   1. Define a high-level domain model, define nouns
    2. Two types of system operations: Commands (CUD) and Queries (R)
 
    <img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/01edb25d-e690-4783-8e58-ff57753e4796" />
    
 2. Determine the decomposition into services.
    1. One strategy, which has its origins in the discipline of business architecture, is to define services corresponding to business capabilities. (https://microservices.io/patterns/decomposition/decompose-by-business-capability.html)
+
+   <img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/00096315-3383-4b5e-ac08-29163594f3ce" />
+
+   
    2. Another strategy is to organize services around domain-driven design subdomains. The result is services that are organized around business concepts rather than technical concepts
 
 Obstacles to decomposition:
