@@ -19,6 +19,8 @@ To avoid binary coupling, the author suggests using **event-driven architectures
 
 #### Consistency (Monoliths) vs. Availability (Microservices)
 
+---
+
 # Microservices Patterns
 
 <img width="1024" height="768" alt="image" src="https://github.com/user-attachments/assets/990d0bae-239f-4533-94e2-41b7af3e2462" />
@@ -136,9 +138,12 @@ Decomposing an application into services by applying the decomposition patterns:
 
    <img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/105790c6-1562-447b-8380-4f37c145d949" />
 
-   subdomains and bounded contexts (includes the code artifacts that implement the model)
+   - subdomains and bounded contexts (includes the code artifacts that implement the model)
 
-Obstacles to decomposition:
+Decompose microservices: Business capability vs Domain (https://stackoverflow.com/questions/45688730/decompose-microservices-business-capability-vs-domain)
+
+#### Obstacles to decomposition
+
 1. Network latency (batch API for fetching multiple objects/combine services, replacing expensive IPC with
 language-level method or function calls)
 2. Synchronous communication between services reduces availability (use asynchronous messaging)
