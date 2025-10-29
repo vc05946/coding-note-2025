@@ -132,13 +132,21 @@ Decomposing an application into services by applying the decomposition patterns:
    <img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/00096315-3383-4b5e-ac08-29163594f3ce" />
 
    
-   2. Another strategy is to organize services around domain-driven design subdomains. The result is services that are organized around business concepts rather than technical concepts
+   2. Another strategy is to organize services around domain-driven design subdomains. The result is services that are organized around business concepts rather than technical concepts (https://microservices.io/patterns/decomposition/decompose-by-subdomain.html)
+
+   <img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/105790c6-1562-447b-8380-4f37c145d949" />
+
+   subdomains and bounded contexts (includes the code artifacts that implement the model)
 
 Obstacles to decomposition:
 1. Network latency
 2. Synchronous communication between services reduces availability
 3. Requirement to maintain data consistency across services
 4. God classes, which are used throughout an application, can use concepts from domain-driven design to eliminate god classes
+
+#### SINGLE RESPONSIBILITY PRINCIPLE
+A class should have only one reason to change. - Robert C. Martin
+
 
 #### Bounded context concept
 Using the bounded context concept from domain-driven design (DDD) to untangle data and make
