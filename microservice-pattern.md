@@ -139,13 +139,20 @@ Decomposing an application into services by applying the decomposition patterns:
    subdomains and bounded contexts (includes the code artifacts that implement the model)
 
 Obstacles to decomposition:
-1. Network latency
-2. Synchronous communication between services reduces availability
-3. Requirement to maintain data consistency across services
+1. Network latency (batch API for fetching multiple objects/combine services, replacing expensive IPC with
+language-level method or function calls)
+2. Synchronous communication between services reduces availability (use asynchronous messaging)
+3. Requirement to maintain data consistency across services (rarely a problem)
 4. God classes, which are used throughout an application, can use concepts from domain-driven design to eliminate god classes
 
 #### SINGLE RESPONSIBILITY PRINCIPLE
-A class should have only one reason to change. - Robert C. Martin
+> A class should have only one reason to change. - Robert C. Martin
+
+#### COMMON CLOSURE PRINCIPLE
+> The classes in a package should be closed together against the same kinds of changes. A change that affects a package affects all the classes in that package. －Robert C. Martin
+
+The goal is that when that business rule changes, developers only need to change code in a small number of
+packages (ideally, only one). Adhering to the CCP significantly improves the maintainability of an application.
 
 
 #### Bounded context concept
