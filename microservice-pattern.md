@@ -89,7 +89,6 @@ Drawbacks:
 
 <img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/b53bbb78-dc9d-43db-a633-f7031a64631b" />
 
-
 The hexagonal architecture style organizes the logical view in a way that places the business logic at the center. 
 
 Instead of the presentation layer, the application has one or more inbound adapters that handle requests from the outside by invoking the business logic. 
@@ -101,12 +100,41 @@ A key characteristic and benefit of this architecture is that the business logic
 The business logic has one or more ports. A port defines a set of operations and is how the business logic interacts with what’s outside of it.
 
 #### WHAT IS A SERVICE?
+<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/dc14fc0f-3a67-4ed0-aba3-eaad17534c71" />
+
 A service is a standalone, independently deployable software component that implements some useful functionality
 
 A service’s API encapsulates its internal implementation. Unlike in a monolith, a developer can’t write code that bypasses its API. As a result, the microservice architecture enforces the application’s modularity.
 
+#### WHAT IS LOOSE COUPLING?
+The requirement for services to be loosely coupled and to collaborate only via APIs prohibits services from communicating via a database.
+
+You must treat a service’s persistent data like the fields of a class and keep them private. Keeping the data private enables a developer to change their service’s database schema without having to spend time coordinating with developers working on other services. Not sharing database tables also improves runtime isolation.
+
+#### THE SIZE OF A SERVICE IS MOSTLY UNIMPORTANT
+
 #### Decomposing an application into services 
+<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/5e6a78d7-4c0a-450e-afb6-5d7930f92e5b" />
+
 Decomposing an application into services by applying the decomposition patterns: Decompose by business capability and Decompose by subdomain
+
+
+
+1. Define the system operations: 
+   1. Define high-level domain model, define nouns
+   2. Two types of system operations: Commands (CUD) and Queries (R)
+
+   <img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/01edb25d-e690-4783-8e58-ff57753e4796" />
+   
+2. Determine the decomposition into services.
+   1. One strategy, which has its origins in the discipline of business architecture, is to define services corresponding to business capabilities. (https://microservices.io/patterns/decomposition/decompose-by-business-capability.html)
+   2. Another strategy is to organize services around domain-driven design subdomains. The result is services that are organized around business concepts rather than technical concepts
+
+Obstacles to decomposition:
+1. Network latency
+2. Synchronous communication between services reduces availability
+3. Requirement to maintain data consistency across services
+4. God classes, which are used throughout an application, can use concepts from domain-driven design to eliminate god classes
 
 #### Bounded context concept
 Using the bounded context concept from domain-driven design (DDD) to untangle data and make
