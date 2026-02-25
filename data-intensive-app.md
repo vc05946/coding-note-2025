@@ -70,6 +70,44 @@ The chapter briefly covers what happens when you need to search by something *ot
 
 The chapter shifts gears here. The previous trees are for **OLTP** (getting specific rows). This section is about **OLAP** (scanning billions of rows).
 
+## OLTP vs OLAP – The Core Difference
+
+| Aspect                | OLTP (Transactional)                          | OLAP (Analytical)                                   |
+|-----------------------|-----------------------------------------------|-----------------------------------------------------|
+| Purpose               | Day-to-day operations (CRUD)                  | Analytics, reporting, BI, dashboards                |
+| Typical query         | `SELECT * FROM orders WHERE id = 12345`       | `SELECT country, AVG(amount) FROM sales GROUP BY country, month` |
+| Data scanned per query| Few – hundreds of rows                        | Millions – billions of rows                         |
+| Storage orientation   | **Row-oriented**                              | **Column-oriented**                                 |
+| Compression           | Moderate                                      | Very high (5–30× better)                            |
+| Write pattern         | Many small, frequent updates/inserts          | Bulk loads, append-only or infrequent big updates   |
+| Classic databases     | PostgreSQL, MySQL, Oracle, SQL Server (app DB)| Snowflake, BigQuery, Redshift, ClickHouse, Databricks |
+
+**Key reason columnar wins for analytics**:  
+When you run `SUM(sales)` filtered on 3 columns, the engine reads **only those 3 columns** from disk → massive speed & I/O savings.
+
+## Modern Cloud OLAP / Analytical Systems (2026 snapshot)
+
+| System              | Columnar?              | Compute ↔ Storage          | Architecture style                  | Standout Features                                  | Pricing model (main driver)          | Open Source?   | Best For                                          |
+|---------------------|------------------------|----------------------------|-------------------------------------|----------------------------------------------------|--------------------------------------|----------------|---------------------------------------------------|
+| **Snowflake**       | Yes                    | **Full separation**        | Virtual Warehouses + S3-like storage| Auto-scaling, Time Travel, Zero-copy cloning, Snowpark | Credits (compute seconds)           | No             | Ease of use, multi-cloud, governed sharing        |
+| **Amazon Redshift** | Yes                    | Partial (Serverless = yes) | MPP clusters / Serverless           | Deep AWS integration, sort & dist keys tuning      | Node-hours or Serverless RPU        | No             | Heavy AWS shops, mature ecosystem                 |
+| **Google BigQuery** | Yes                    | **Full separation**        | Serverless + Dremel engine          | Pay-per-byte-scanned, near-zero management         | Bytes scanned + slots (on-demand/flat-rate) | No     | Ad-hoc exploration, Google Cloud users            |
+| **ClickHouse**      | Yes (very aggressive)  | Yes (in Cloud version)     | Distributed MergeTree + vectorized  | Blazing query speed, real-time ingestion           | Cloud = compute / OSS = free         | **Yes** (core) | Highest raw performance, observability, events    |
+
+## One-liner Positioning (2026)
+
+- **Snowflake**  
+  → “The friendly, almost magical data warehouse — scales itself, clones instantly, works everywhere.”
+
+- **Redshift**  
+  → “The battle-tested AWS columnar MPP warehouse — powerful when you tune it right.”
+
+- **BigQuery**  
+  → “Google’s serverless analytics beast — just write SQL and pay mostly for what you scan.”
+
+- **ClickHouse**  
+  → “The performance monster — sub-second queries on trillions of rows, open-source roots, now excellent managed too.”
+
 **Key Concepts:**
 1.  **Column-Oriented Storage:** Instead of storing `[Name, Age, Salary]`, you store all `Names` together, all `Ages` together, etc.
 2.  **Compression:** Because the data in a column is similar (e.g., many people have the age "29"), it compresses incredibly well using **Bitmap Encoding** or **Run-Length Encoding**.
